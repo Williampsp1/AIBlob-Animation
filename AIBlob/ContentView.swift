@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var index: Int = 0
     @State private var index2: Int = 0
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    private let timer2 = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    private let timer2 = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -33,19 +33,15 @@ struct ContentView: View {
                 .scaledToFit()
                 .blur(radius: 6)
                 .frame(width: 100)
-                .rotationEffect(.degrees(-50))
-                .scaleEffect(0.85)
-                .animation(.easeInOut(duration: 2.5), value: index2)
+                .animation(.easeInOut(duration: 1.5), value: index2)
             images[index2]
                 .resizable()
                 .scaledToFit()
                 .blur(radius: 6)
                 .frame(width: 100)
-                .rotationEffect(.degrees(180))
-                .scaleEffect(0.9)
-                .animation(.easeInOut(duration: 3), value: index2)
+                .animation(.easeInOut(duration: 2), value: index2)
             Circle().stroke(Color.gray, lineWidth: 1)
-                .frame(width: 120)
+                .frame(width: 130)
         }
         .onReceive(timer) { _ in
             if index == images.count - 1 {
